@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-function Stat({ text, value }) {
+function StatisticLine({ text, value }) {
   return (
     <p><strong>{text}:</strong> {value}</p>
   )
@@ -13,7 +13,9 @@ function Statistics( {children, isFeedbackGiven} ) {
         <h2>
           statistics
         </h2>
-        {children}
+        <div>
+          {children}
+        </div>
       </>
     )
   return (
@@ -70,12 +72,12 @@ function App() {
           <Button handleClick={incrementBad} text="bad" />
         </Feedback>
         <Statistics isFeedbackGiven={all}>
-          <Stat text="good" value={good} />
-          <Stat text="neutral" value={neutral} />
-          <Stat text="bad" value={bad} />
-          <Stat text="all" value={all} />
-          <Stat text="average" value={average} />
-          <Stat text="positive" value={positivePercentage} />
+          <StatisticLine text="good" value={good} />
+          <StatisticLine text="neutral" value={neutral} />
+          <StatisticLine text="bad" value={bad} />
+          <StatisticLine text="all" value={all} />
+          <StatisticLine text="average" value={average} />
+          <StatisticLine text="positive" value={positivePercentage} />
         </Statistics>
       </div>
     </>

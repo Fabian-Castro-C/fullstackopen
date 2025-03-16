@@ -43,25 +43,32 @@ function App() {
   const [ neutral, setNeutral ] = useState(0)
   const [ bad, setBad ] = useState(0)
 
-  const handlerFactory = ( state, setState ) => {
-    const newState = state + 1
-    const handler = () => setState(newState)
-    return handler
-  }
+  const incrementGood = () => setGood(good + 1)
+  const incrementNeutral = () => setNeutral(neutral + 1)
+  const incrementBad = () => setBad(bad + 1)
+
+  // More stats
+  const all = good + neutral + bad
+  const average = all === 0 ? 0 : (good - bad) / all
+  const positiveValue = all === 0 ? 0 : (good / all) * 100
+  const positivePercentage = String(positiveValue) + " %" 
 
   return (
     <>
       <h1>Unicafe</h1>
       <div>
         <Feedback>
-          <Button handleClick={handlerFactory(good, setGood)} text="good" />
-          <Button handleClick={handlerFactory(neutral, setNeutral)} text="neutral" />
-          <Button handleClick={handlerFactory(bad, setBad)} text="bad" />
+          <Button handleClick={incrementGood} text="good" />
+          <Button handleClick={incrementNeutral} text="neutral" />
+          <Button handleClick={incrementBad} text="bad" />
         </Feedback>
         <Statistics>
           <Stat text="good" value={good} />
           <Stat text="neutral" value={neutral} />
           <Stat text="bad" value={bad} />
+          <Stat text="all" value={all} />
+          <Stat text="average" value={average} />
+          <Stat text="positive" value={positivePercentage} />
         </Statistics>
       </div>
     </>

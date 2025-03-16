@@ -2,7 +2,7 @@ import { useState } from "react"
 
 function Stat({ text, value }) {
   return (
-    <li><strong>{text}:</strong> {value}</li>
+    <p><strong>{text}:</strong> {value}</p>
   )
 }
 
@@ -12,9 +12,7 @@ function Statistics( {children} ) {
       <h2>
         statistics
       </h2>
-      <ul>
-        {children}
-      </ul>
+      {children}
     </>
   )
 }

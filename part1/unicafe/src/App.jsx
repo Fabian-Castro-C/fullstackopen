@@ -2,7 +2,10 @@ import { useState } from "react"
 
 function StatisticLine({ text, value }) {
   return (
-    <p><strong>{text}:</strong> {value}</p>
+    <tr>
+      <td><strong>{text}:</strong></td>
+      <td>{value}</td>
+    </tr> 
   )
 }
 
@@ -14,7 +17,11 @@ function Statistics( {children, isFeedbackGiven} ) {
           statistics
         </h2>
         <div>
-          {children}
+          <table>
+            <tbody>
+              {children}
+            </tbody>
+          </table>
         </div>
       </>
     )
@@ -58,8 +65,8 @@ function App() {
 
   // More stats
   const all = good + neutral + bad
-  const average = all === 0 ? 0 : (good - bad) / all
-  const positiveValue = all === 0 ? 0 : (good / all) * 100
+  const average = ((good - bad) / all).toFixed(1)
+  const positiveValue = ((good / all) * 100).toFixed(1)
   const positivePercentage = String(positiveValue) + " %" 
 
   return (

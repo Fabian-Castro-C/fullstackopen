@@ -6,13 +6,22 @@ function Stat({ text, value }) {
   )
 }
 
-function Statistics( {children} ) {
+function Statistics( {children, isFeedbackGiven} ) {
+  if (isFeedbackGiven)
+    return (
+      <>
+        <h2>
+          statistics
+        </h2>
+        {children}
+      </>
+    )
   return (
     <>
       <h2>
         statistics
       </h2>
-      {children}
+      <p>No feedback given</p>
     </>
   )
 }
@@ -60,7 +69,7 @@ function App() {
           <Button handleClick={incrementNeutral} text="neutral" />
           <Button handleClick={incrementBad} text="bad" />
         </Feedback>
-        <Statistics>
+        <Statistics isFeedbackGiven={all}>
           <Stat text="good" value={good} />
           <Stat text="neutral" value={neutral} />
           <Stat text="bad" value={bad} />
